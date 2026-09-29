@@ -1,0 +1,11 @@
+<section class="reviews-band">
+  <div class="wrap reviews-inner">
+    <p class="eyebrow">Across {{ store_count }} stores</p>
+    <div class="reviews-score">
+      <span class="reviews-stars">★★★★★</span>
+      <span class="reviews-number">{{ aggregate_rating }}</span>
+      <span class="reviews-count">from {{ "{:,}".format(aggregate_reviews) }} Google reviews</span>
+    </div>
+    <a class="btn btn-line small" href="{{ url_for('stores') }}">See ratings by store</a>
+  </div>
+</section>

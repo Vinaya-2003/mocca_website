@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Enquire — MOCCA{% endblock %}
+{% block bodyclass %}page-contact{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="wrap">
+    <p class="eyebrow">Fittings &amp; enquiries</p>
+    <h1>Talk to a stylist</h1>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="wrap contact-grid">
+    <form class="contact-form" method="post" action="{{ url_for('contact') }}" novalidate>
+      {% if submitted %}
+      <div class="form-success" role="status">Thank you — a stylist will call you back shortly.</div>
+      {% endif %}
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" required>
+      </label>
+      <label>
+        <span>Phone</span>
+        <input type="tel" name="phone" required>
+      </label>
+      <label>
+        <span>I'm shopping for</span>
+        <select name="interest">
+          <option value="menswear">Men's Wear</option>
+          <option value="wedding">Wedding</option>
+        </select>
+      </label>
+      <label>
+        <span>Preferred store</span>
+        <select name="store">
+          {% for s in stores %}
+          <option value="{{ s.id }}">{{ s.name }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>
+        <span>What are you shopping for?</span>
+        <textarea name="message" rows="4" placeholder="Wedding sherwani for a December ceremony, size 40…"></textarea>
+      </label>
+      <button class="btn btn-solid" type="submit">Send enquiry</button>
+    </form>
+
+    <div class="contact-aside">
+      <h3>Or call directly</h3>
+      <p class="contact-phone">{{ brand.phone }}</p>
+      <h3>Stores</h3>
+      <ul class="contact-store-list">
+        {% for s in stores %}
+        <li><strong>{{ s.name }}</strong><br>{{ s.address }}{% if s.phone %}<br>{{ s.phone }}{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

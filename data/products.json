@@ -1,0 +1,187 @@
+{
+  "brand": {
+    "name": "MOCCA",
+    "tagline": "Makes you shopaholic",
+    "phone": "+91 62828 80433"
+  },
+  "sections": {
+    "menswear": {
+      "title": "MOCCA Men's Wear",
+      "tagline": "Everyday tailoring, knitwear and kidswear across six stores in Malappuram.",
+      "hero_image": "images/hero.jpg",
+      "collections": [
+        {
+          "slug": "casual",
+          "name": "Casual Knitwear",
+          "swatch": "#A89C8E",
+          "tagline": "Ribbed knit polos and relaxed tailoring for off-duty afternoons.",
+          "products": [
+            {
+              "id": "cs-01",
+              "name": "Ivory Stripe Knit Polo",
+              "image": "images/products/cs-01.jpg"
+            },
+            {
+              "id": "cs-02",
+              "name": "Espresso Knit Polo & Flared Trouser",
+              "image": "images/collections/casual.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "formal",
+          "name": "Formal Suiting",
+          "swatch": "#3D2B23",
+          "tagline": "Tailored two-piece suits for receptions and the boardroom.",
+          "products": [
+            {
+              "id": "fm-01",
+              "name": "Warm Greige Two-Piece Suit",
+              "image": "images/products/fm-01.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "festive",
+          "name": "Festive & Onam Wear",
+          "swatch": "#B8875A",
+          "tagline": "Floral kurtas and family festive dressing for Onam and beyond.",
+          "products": [
+            {
+              "id": "fw-01",
+              "name": "Floral Print Kurta & Mundu Set",
+              "image": "images/products/fw-01.jpg"
+            }
+          ]
+        },
+        {
+          "slug": "kids",
+          "name": "Kids Collection",
+          "swatch": "#7C8A6E",
+          "tagline": "Oversized denim and cargo fits, scaled down for the youngest shopaholics.",
+          "products": [
+            {
+              "id": "kd-01",
+              "name": "Acid-Wash Denim Jacket",
+              "image": "images/products/kd-01.jpg"
+            },
+            {
+              "id": "kd-02",
+              "name": "Olive Cargo Pants (Kids)",
+              "image": "images/products/kd-02.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    "wedding": {
+      "title": "MOCCA Wedding",
+      "tagline": "Sherwanis, bandhgalas and bridal-party tailoring for every ceremony on the calendar.",
+      "hero_image": "images/hero-wedding.jpg",
+      "looks": [
+        {
+          "id": "wd-01",
+          "name": "Ivory Patchwork Blazer",
+          "image": "images/wedding/wd-01.jpg"
+        },
+        {
+          "id": "wd-02",
+          "name": "Black Velvet Bandhgala, Gold Embroidery",
+          "image": "images/wedding/wd-02.jpg"
+        },
+        {
+          "id": "wd-03",
+          "name": "Ivory Kurta & Pajama Set",
+          "image": "images/wedding/wd-03.jpg"
+        },
+        {
+          "id": "wd-04",
+          "name": "Ivory Pinstripe Tuxedo",
+          "image": "images/wedding/wd-04.jpg"
+        },
+        {
+          "id": "wd-05",
+          "name": "Black Embellished Blazer",
+          "image": "images/wedding/wd-05.jpg"
+        },
+        {
+          "id": "wd-06",
+          "name": "Ivory Floral Embroidered Blazer",
+          "image": "images/wedding/wd-06.jpg"
+        },
+        {
+          "id": "wd-07",
+          "name": "Black Sherwani, Gold Thread Work",
+          "image": "images/wedding/wd-07.jpg"
+        },
+        {
+          "id": "wd-08",
+          "name": "Ivory Floral Embroidered Blazer, Alt",
+          "image": "images/wedding/wd-08.jpg"
+        }
+      ]
+    }
+  },
+  "stores": [
+    {
+      "id": "cherpulassery",
+      "name": "MOCCA Cherpulassery",
+      "address": "Pattambi - Cherpulassery Rd, Cherpulassery, Kerala 679503",
+      "phone": "",
+      "rating": 4.9,
+      "reviews": 497,
+      "hours": "Closes 9 PM",
+      "flagship": true
+    },
+    {
+      "id": "edappal",
+      "name": "MOCCA Men's Wear & Wedding Edappal",
+      "address": "Palakkad - Ponnani Rd, Edappal, Kerala 679576",
+      "phone": "090742 25579",
+      "rating": 4.8,
+      "reviews": 1067,
+      "hours": "Closes 10 PM",
+      "flagship": false
+    },
+    {
+      "id": "vengara",
+      "name": "MOCCA Men's Wear & Wedding Vengara",
+      "address": "near Siyana Gold, Vengara, Kerala 676304",
+      "phone": "",
+      "rating": 4.8,
+      "reviews": 445,
+      "hours": "Closes 10 PM",
+      "flagship": false
+    },
+    {
+      "id": "perinthalmanna",
+      "name": "MOCCA Men's Wear & Wedding Perinthalmanna",
+      "address": "Al Shifa Hospital Rd, Padippura, Perinthalmanna, Kerala 679322",
+      "phone": "090727 57872",
+      "rating": 4.8,
+      "reviews": 632,
+      "hours": "Closes 10 PM",
+      "flagship": false
+    },
+    {
+      "id": "nilambur",
+      "name": "MOCCA Men's Wear & Wedding Nilambur",
+      "address": "7/247, Chandakunnu, Nilambur, Kerala 679342",
+      "phone": "092075 78767",
+      "rating": 4.9,
+      "reviews": 494,
+      "hours": "Closes 10 PM",
+      "flagship": false
+    },
+    {
+      "id": "manjeri",
+      "name": "MOCCA Manjeri",
+      "address": "Thurakkal Baputty Bypass Rd, Thurakkal, Manjeri, Kerala 676121",
+      "phone": "090742 83339",
+      "rating": 4.7,
+      "reviews": 198,
+      "hours": "Closes 9:30 PM",
+      "flagship": false
+    }
+  ]
+}

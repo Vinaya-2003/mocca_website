@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}MOCCA — Men's Wear &amp; Wedding{% endblock %}
+{% block bodyclass %}page-landing{% endblock %}
+
+{% block content %}
+<section class="gateway">
+  <div class="gateway-intro">
+    <p class="eyebrow float-text">Cherpulassery · Edappal · Vengara · Perinthalmanna · Nilambur · Manjeri</p>
+    <h1 class="gateway-title">Two wardrobes.<br>One shopaholic habit.</h1>
+  </div>
+
+  <div class="gateway-split">
+    <a class="gateway-panel" href="{{ url_for('menswear') }}" style="background-image:url('{{ url_for('static', filename=menswear.hero_image) }}')">
+      <span class="gateway-panel-overlay"></span>
+      <span class="gateway-panel-copy">
+        <span class="gateway-eyebrow">01</span>
+        <span class="gateway-name">MOCCA<br>Men's Wear</span>
+        <span class="gateway-tagline">{{ menswear.tagline }}</span>
+        <span class="gateway-cta">Explore the edit →</span>
+      </span>
+    </a>
+
+    <a class="gateway-panel gateway-panel-wedding" href="{{ url_for('wedding') }}" style="background-image:url('{{ url_for('static', filename=wedding.hero_image) }}')">
+      <span class="gateway-panel-overlay"></span>
+      <span class="gateway-panel-copy">
+        <span class="gateway-eyebrow">02</span>
+        <span class="gateway-name">MOCCA<br>Wedding</span>
+        <span class="gateway-tagline">{{ wedding.tagline }}</span>
+        <span class="gateway-cta">View the lookbook →</span>
+      </span>
+    </a>
+  </div>
+</section>
+{% endblock %}

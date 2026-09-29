@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}MOCCA Wedding — Bridal Party Tailoring{% endblock %}
+{% block bodyclass %}page-wedding{% endblock %}
+
+{% block content %}
+
+<section class="wedding-hero" style="background-image:url('{{ url_for('static', filename=section.hero_image) }}');">
+  <div class="wedding-hero-overlay"></div>
+  <div class="wrap wedding-hero-inner">
+    <p class="eyebrow gold float-text">MOCCA Wedding</p>
+    <h1 class="wedding-h1">Sherwanis, bandhgalas<br>&amp; the art of arriving well-dressed.</h1>
+    <p class="wedding-lede">{{ section.tagline }}</p>
+    <a class="btn btn-solid gold" href="#lookbook">View the lookbook</a>
+  </div>
+  <span class="wedding-floating-badge float">Bridal Edit</span>
+</section>
+
+<section id="lookbook" class="wedding-lookbook">
+  <div class="wrap section-head">
+    <p class="eyebrow gold">The lookbook</p>
+    <h2 class="wedding-h2">Eight looks, every one tailored in-house.</h2>
+  </div>
+
+  <div class="wrap lookbook-grid">
+    {% for look in section.looks %}
+    <figure class="lookbook-figure float-soft" style="animation-delay: {{ loop.index0 * 0.4 }}s;">
+      {% if look.image_url %}
+      <img src="{{ url_for('static', filename=look.image_url) }}" alt="{{ look.name }}">
+      {% endif %}
+      <figcaption>{{ look.name }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+
+  <div class="wrap" style="text-align:center; margin-top: 3rem;">
+    <a class="btn btn-line gold" href="{{ url_for('contact') }}">Book a wedding fitting</a>
+  </div>
+</section>
+
+<section class="cta-band wedding-cta">
+  <div class="wrap cta-inner">
+    <h2 class="float-text">Everyday wardrobe sorted too?<br>See MOCCA Men's Wear.</h2>
+    <a class="btn btn-solid inverted" href="{{ url_for('menswear') }}">Visit MOCCA Men's Wear</a>
+  </div>
+</section>
+
+{% include "_reviews.html" %}
+
+{% endblock %}

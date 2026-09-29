@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}MOCCA Men's Wear — Kerala{% endblock %}
+{% block bodyclass %}page-menswear{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">MOCCA Men's Wear</p>
+      <h1>Everyday tailoring,<br><em>worn on repeat.</em></h1>
+      <p class="hero-lede">{{ section.tagline }}</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#collections">Browse the edit</a>
+        <a class="btn btn-line" href="{{ url_for('wedding') }}">Looking for wedding wear?</a>
+      </div>
+    </div>
+    <div class="hero-panel has-image float" style="background-image: url('{{ url_for('static', filename=section.hero_image) }}');" aria-hidden="true">
+      <span class="hero-floating-tag float-text float-delay">6 stores, one habit</span>
+    </div>
+  </div>
+
+  <div class="swatch-nav" role="navigation" aria-label="Jump to collection by swatch">
+    {% for c in section.collections %}
+    <button class="swatch" data-target="collection-{{ c.slug }}" style="--swatch-color: {{ c.swatch }}">
+      <span class="swatch-chip"></span>
+      <span class="swatch-name">{{ c.name }}</span>
+    </button>
+    {% endfor %}
+  </div>
+</section>
+
+<section id="collections" class="collections">
+  <div class="wrap section-head">
+    <p class="eyebrow">The edit</p>
+    <h2>Four collections, one wardrobe.</h2>
+  </div>
+
+  {% for c in section.collections %}
+  <article id="collection-{{ c.slug }}" class="collection-row {{ 'row-alt' if loop.index0 is odd else '' }}">
+    <div class="wrap collection-grid">
+      <div class="collection-gallery">
+        {% for p in c.products %}
+        <figure class="gallery-figure float-soft" style="animation-delay: {{ loop.index0 * 0.6 }}s;">
+          {% if p.image_url %}
+          <img src="{{ url_for('static', filename=p.image_url) }}" alt="{{ p.name }}">
+          {% else %}
+          <div class="gallery-figure-fallback" style="background:{{ c.swatch }}"></div>
+          {% endif %}
+          <figcaption>{{ p.name }}</figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+      <div class="collection-info">
+        <span class="collection-index" style="color: {{ c.swatch }}">0{{ loop.index }}</span>
+        <h3>{{ c.name }}</h3>
+        <p>{{ c.tagline }}</p>
+        <a class="btn btn-line small" href="{{ url_for('menswear_collection', slug=c.slug) }}">View {{ c.name }}</a>
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-inner">
+    <h2 class="float-text">Planning a wedding order too?<br>See the MOCCA Wedding lookbook.</h2>
+    <a class="btn btn-solid inverted" href="{{ url_for('wedding') }}">Visit MOCCA Wedding</a>
+  </div>
+</section>
+
+{% include "_reviews.html" %}
+
+{% endblock %}

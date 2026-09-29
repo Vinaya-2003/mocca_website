@@ -1,0 +1,461 @@
+/* ===========================================================
+   MOCCA — design tokens
+   Palette taken from the brand's quiet-luxury lookbook.
+   =========================================================== */
+:root {
+  --espresso: #3D2B23;
+  --camel: #B8875A;
+  --ivory: #F2EEE6;
+  --greige: #A89C8E;
+  --gold-thread: #C9A66B;
+  --near-black: #1C1410;
+  --line: rgba(61, 43, 35, 0.16);
+
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --body: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+
+  --max: 1180px;
+  --pad: clamp(1.25rem, 4vw, 3rem);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--near-black);
+  font-family: var(--body);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { padding: 0; margin: 0; list-style: none; }
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 500;
+  color: var(--espresso);
+  margin: 0 0 0.5em;
+  letter-spacing: 0.01em;
+}
+h1 { font-size: clamp(2.4rem, 5vw, 4.2rem); line-height: 1.05; }
+h2 { font-size: clamp(1.8rem, 3.2vw, 2.6rem); line-height: 1.15; }
+h3 { font-size: 1.35rem; }
+p { margin: 0 0 1em; }
+em { font-style: italic; color: var(--camel); }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+.eyebrow {
+  font-family: var(--body);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--camel);
+  font-weight: 500;
+  margin-bottom: 0.9em;
+}
+
+.thread-line {
+  height: 4px;
+  background: linear-gradient(90deg, var(--espresso) 0%, var(--camel) 33%, var(--ivory) 66%, var(--greige) 100%);
+}
+
+/* focus visibility */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--camel);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ===========================================================
+   Buttons
+   =========================================================== */
+.btn {
+  display: inline-block;
+  font-family: var(--body);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.9em 1.8em;
+  border-radius: 2px;
+  border: 1px solid var(--espresso);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.btn-solid { background: var(--espresso); color: var(--ivory); }
+.btn-solid:hover { background: var(--camel); border-color: var(--camel); }
+.btn-solid.inverted { background: var(--ivory); color: var(--espresso); border-color: var(--ivory); }
+.btn-solid.inverted:hover { background: var(--camel); color: var(--ivory); border-color: var(--camel); }
+.btn-line { background: transparent; color: var(--espresso); }
+.btn-line:hover { background: var(--espresso); color: var(--ivory); }
+.btn.small { padding: 0.6em 1.3em; font-size: 0.75rem; }
+
+/* ===========================================================
+   Header
+   =========================================================== */
+.site-header { position: sticky; top: 0; z-index: 40; background: rgba(242,238,230,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; align-items: center; gap: 2rem; padding: 1.1rem var(--pad); }
+.wordmark { font-family: var(--display); font-size: 1.6rem; letter-spacing: 0.06em; color: var(--espresso); font-weight: 600; display: flex; align-items: center; }
+.logo-img { height: 38px; width: auto; display: block; }
+.wordmark.small { font-size: 1.3rem; display: block; margin-bottom: 0.4rem; }
+.main-nav { display: flex; gap: 1.8rem; margin-left: 1rem; flex: 1; }
+.main-nav a { font-size: 0.85rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--espresso); opacity: 0.8; }
+.main-nav a:hover { opacity: 1; border-bottom: 1px solid var(--camel); }
+.header-rating { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--espresso); }
+.header-rating .stars { color: var(--camel); letter-spacing: 0.05em; }
+.nav-toggle { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 0.4rem; }
+.nav-toggle span { width: 22px; height: 2px; background: var(--espresso); }
+.mobile-nav { display: none; flex-direction: column; background: var(--ivory); border-top: 1px solid var(--line); }
+.mobile-nav a { padding: 0.9rem var(--pad); border-bottom: 1px solid var(--line); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.site-header.nav-open .mobile-nav { display: flex; }
+
+@media (max-width: 860px) {
+  .main-nav, .header-rating { display: none; }
+  .nav-toggle { display: flex; margin-left: auto; }
+}
+
+/* ===========================================================
+   Hero
+   =========================================================== */
+.hero { padding: clamp(2.5rem, 6vw, 5rem) 0 0; }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.hero-lede { max-width: 34ch; color: rgba(28,20,16,0.78); }
+.hero-actions { display: flex; gap: 1rem; margin-top: 1.6rem; flex-wrap: wrap; }
+
+.hero-panel { aspect-ratio: 4/5; background: linear-gradient(160deg, var(--camel) 0%, var(--espresso) 62%, var(--near-black) 100%); border-radius: 4px; position: relative; overflow: hidden; }
+.hero-panel.has-image { background-size: cover; background-position: center; }
+.panel-frame { position: absolute; inset: 1.4rem; border: 1px solid rgba(242,238,230,0.35); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: var(--ivory); }
+.panel-label { text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.3em; opacity: 0.75; margin-bottom: 1.2rem; }
+.panel-word { font-family: var(--display); font-size: clamp(2.6rem, 6vw, 3.6rem); letter-spacing: 0.08em; }
+.panel-sub { font-size: 0.8rem; letter-spacing: 0.08em; opacity: 0.8; margin-top: 0.6rem; text-transform: lowercase; }
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-panel { order: -1; aspect-ratio: 16/10; }
+}
+
+/* Signature element: swatch strip that navigates to collections */
+.swatch-nav {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+.swatch {
+  border: none;
+  border-right: 1px solid var(--line);
+  background: var(--ivory);
+  cursor: pointer;
+  padding: 1.1rem var(--pad);
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--body);
+  transition: background 0.25s ease;
+}
+.swatch:last-child { border-right: none; }
+.swatch:hover { background: rgba(184,135,90,0.12); }
+.swatch-chip { width: 20px; height: 20px; border-radius: 50%; background: var(--swatch-color); border: 1px solid rgba(0,0,0,0.15); flex-shrink: 0; }
+.swatch-name { font-size: 0.82rem; color: var(--espresso); flex: 1; }
+.swatch-hex { font-size: 0.68rem; color: var(--greige); letter-spacing: 0.03em; display: none; }
+@media (min-width: 640px) { .swatch-hex { display: inline; } }
+@media (max-width: 760px) { .swatch-nav { grid-template-columns: repeat(2, 1fr); } }
+
+/* ===========================================================
+   Collections (editorial alternating rows)
+   =========================================================== */
+.section-head { text-align: center; padding: clamp(3rem, 6vw, 5rem) 0 clamp(1.5rem, 3vw, 2.5rem); }
+.section-head h2 { max-width: 26ch; margin: 0 auto; }
+
+.collection-row { border-top: 1px solid var(--line); padding: clamp(2.5rem, 5vw, 4rem) 0; scroll-margin-top: 6rem; }
+.collection-grid { display: grid; grid-template-columns: 0.55fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
+.row-alt .collection-grid { grid-template-columns: 1fr 0.55fr; }
+.row-alt .collection-swatchblock { order: 2; }
+
+.collection-swatchblock {
+  aspect-ratio: 3/4;
+  background: var(--swatch-color);
+  border-radius: 3px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+}
+.collection-swatchblock.has-image { background-size: cover; background-position: center; }
+.collection-swatchblock.has-image .collection-index { text-shadow: 0 2px 12px rgba(0,0,0,0.55); }
+.collection-index { font-family: var(--display); font-size: 3rem; color: rgba(242,238,230,0.85); }
+
+.collection-info h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.collection-info > p { max-width: 44ch; color: rgba(28,20,16,0.75); }
+
+.product-list { margin: 1.4rem 0 1.6rem; border-top: 1px solid var(--line); }
+.product-list li {
+  display: flex; flex-wrap: wrap; gap: 0.4rem 1rem;
+  padding: 0.75rem 0; border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+.product-name { font-weight: 500; flex: 1 1 auto; min-width: 40%; }
+.product-fabric { color: var(--greige); font-size: 0.82rem; }
+.product-price { color: var(--espresso); font-weight: 500; margin-left: auto; }
+
+@media (max-width: 760px) {
+  .collection-grid, .row-alt .collection-grid { grid-template-columns: 1fr; }
+  .row-alt .collection-swatchblock { order: 0; }
+  .collection-swatchblock { aspect-ratio: 16/9; }
+}
+
+/* ===========================================================
+   Wedding story
+   =========================================================== */
+.wedding-story { background: var(--espresso); color: var(--ivory); padding: clamp(3rem, 6vw, 5.5rem) 0; }
+.wedding-story h2, .wedding-story .eyebrow { color: var(--ivory); }
+.wedding-story .eyebrow { color: var(--gold-thread); }
+.story-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.story-copy p { color: rgba(242,238,230,0.8); max-width: 42ch; }
+
+.palette-strip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(242,238,230,0.25); }
+.palette-swatch { background: var(--c); color: var(--ivory); padding: 1.6rem 1.2rem; min-height: 110px; display: flex; flex-direction: column; justify-content: flex-end; }
+.palette-swatch span { font-size: 0.88rem; font-weight: 500; }
+.palette-swatch small { font-size: 0.7rem; opacity: 0.85; }
+.palette-swatch[style*="F2EEE6"], .palette-swatch[style*="A89C8E"] { color: var(--espresso); }
+.palette-quote { font-family: var(--display); font-style: italic; font-size: 1.15rem; margin-top: 1.4rem; color: var(--gold-thread); }
+
+@media (max-width: 860px) { .story-grid { grid-template-columns: 1fr; } }
+
+/* ===========================================================
+   Stores
+   =========================================================== */
+.stores-preview, .stores-full { padding: clamp(3rem, 6vw, 5rem) 0 clamp(3.5rem, 7vw, 6rem); }
+.stores-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 1rem; }
+.store-card {
+  border: 1px solid var(--line); padding: 1.6rem; position: relative;
+  background: rgba(255,255,255,0.4);
+}
+.store-flagship { border-color: var(--camel); background: rgba(184,135,90,0.08); }
+.flagship-tag {
+  position: absolute; top: -0.7rem; left: 1.5rem; background: var(--camel); color: var(--ivory);
+  font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.6rem;
+}
+.store-card-photo { width: 100%; height: 160px; object-fit: cover; border-radius: 2px; margin-bottom: 1rem; }
+.store-address { font-size: 0.9rem; color: rgba(28,20,16,0.75); }
+.store-meta, .store-hours { font-size: 0.82rem; color: var(--greige); }
+.store-card-full { display: flex; flex-direction: column; gap: 0.3rem; }
+.store-card-full .btn { margin-top: 0.9rem; align-self: flex-start; }
+.stores-note { margin-top: 2rem; font-size: 0.8rem; color: var(--greige); text-align: center; }
+
+@media (max-width: 860px) { .stores-grid { grid-template-columns: 1fr; } }
+
+/* ===========================================================
+   CTA band
+   =========================================================== */
+.cta-band { background: var(--near-black); color: var(--ivory); padding: clamp(3rem, 6vw, 4.5rem) 0; }
+.cta-inner { text-align: center; }
+.cta-band h2 { color: var(--ivory); max-width: 24ch; margin: 0 auto 1.6rem; }
+
+/* ===========================================================
+   Page header (collections / stores / contact)
+   =========================================================== */
+.page-header { padding: clamp(3rem, 6vw, 4.5rem) 0 clamp(1.5rem, 3vw, 2rem); border-bottom: 1px solid var(--line); }
+
+/* ===========================================================
+   Collections browser page
+   =========================================================== */
+.collections-browser { padding: clamp(2.5rem, 5vw, 4rem) 0 5rem; }
+.browser-grid { display: grid; grid-template-columns: 240px 1fr; gap: clamp(2rem, 4vw, 3.5rem); }
+.browser-nav { display: flex; flex-direction: column; gap: 0.3rem; position: sticky; top: 6rem; align-self: start; }
+.browser-nav-item { display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 0.9rem; font-size: 0.9rem; border-left: 2px solid transparent; }
+.browser-nav-item .swatch-chip { width: 14px; height: 14px; }
+.browser-nav-item.is-active { border-left-color: var(--swatch-color); color: var(--espresso); font-weight: 500; background: rgba(184,135,90,0.08); }
+.browser-heading { border-left: 3px solid var(--swatch-color); padding-left: 1.2rem; margin-bottom: 2rem; }
+.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem; }
+.product-card { border: 1px solid var(--line); padding: 1.3rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.product-card-swatch { width: 100%; height: 90px; border-radius: 2px; margin-bottom: 0.4rem; }
+.product-card-photo { width: 100%; height: 220px; object-fit: cover; border-radius: 2px; margin-bottom: 0.4rem; }
+.product-card-fabric { font-size: 0.82rem; color: var(--greige); }
+.product-card-price { font-weight: 500; color: var(--espresso); margin-bottom: 0.4rem; }
+.product-card .btn { align-self: flex-start; }
+
+@media (max-width: 760px) {
+  .browser-grid { grid-template-columns: 1fr; }
+  .browser-nav { position: static; flex-direction: row; overflow-x: auto; }
+  .product-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) { .product-grid { grid-template-columns: 1fr; } }
+
+/* ===========================================================
+   Contact
+   =========================================================== */
+.contact-section { padding: 1rem 0 5rem; }
+.contact-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(2rem, 5vw, 4rem); }
+.contact-form { display: flex; flex-direction: column; gap: 1.1rem; }
+.contact-form label { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.85rem; color: var(--espresso); }
+.contact-form input, .contact-form select, .contact-form textarea {
+  font-family: var(--body); font-size: 0.95rem; padding: 0.75em 0.9em;
+  border: 1px solid var(--line); background: #fff; color: var(--near-black); border-radius: 2px;
+}
+.contact-form button { align-self: flex-start; margin-top: 0.5rem; border: none; cursor: pointer; }
+.form-success { background: rgba(184,135,90,0.15); border: 1px solid var(--camel); padding: 0.9rem 1.1rem; font-size: 0.9rem; }
+.contact-aside h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 1.6rem; }
+.contact-aside h3:first-child { margin-top: 0; }
+.contact-phone { font-family: var(--display); font-size: 1.6rem; color: var(--camel); }
+.contact-store-list li { font-size: 0.88rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line); }
+
+@media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
+
+/* ===========================================================
+   Footer
+   =========================================================== */
+.site-footer { background: var(--near-black); color: rgba(242,238,230,0.85); padding: clamp(3rem, 6vw, 4rem) 0 1.5rem; margin-top: 2rem; }
+.footer-inner { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2rem; }
+.footer-brand p { font-size: 0.85rem; color: rgba(242,238,230,0.6); max-width: 28ch; }
+.footer-col h3 { color: var(--gold-thread); font-family: var(--body); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.8rem; }
+.footer-col li { font-size: 0.85rem; padding: 0.25rem 0; color: rgba(242,238,230,0.75); }
+.footer-col a:hover { color: var(--camel); }
+.footer-bottom { border-top: 1px solid rgba(242,238,230,0.15); margin-top: 2.5rem; padding-top: 1.2rem; font-size: 0.75rem; color: rgba(242,238,230,0.5); }
+
+@media (max-width: 760px) { .footer-inner { grid-template-columns: 1fr 1fr; } }
+
+/* ===========================================================
+   Floating animations (images + text)
+   =========================================================== */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes floatYSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes floatText {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-5px); opacity: 0.85; }
+}
+.float { animation: floatY 6s ease-in-out infinite; }
+.float-soft { animation: floatYSoft 5.5s ease-in-out infinite; }
+.float-text { display: inline-block; animation: floatText 5s ease-in-out infinite; }
+.float-delay { animation-delay: -2.4s; }
+
+.hero-floating-tag {
+  position: absolute; top: 1.4rem; right: 1.4rem;
+  background: rgba(28,20,16,0.75); color: var(--ivory);
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.5em 0.9em; border-radius: 2px;
+}
+
+/* ===========================================================
+   Landing / gateway page
+   =========================================================== */
+.gateway { min-height: calc(100vh - 68px); display: flex; flex-direction: column; }
+.gateway-intro { text-align: center; padding: clamp(2.5rem, 6vw, 4rem) var(--pad) 1.5rem; }
+.gateway-title { font-size: clamp(2.2rem, 5vw, 3.6rem); max-width: 18ch; margin: 0 auto; }
+.gateway-split { display: grid; grid-template-columns: 1fr 1fr; flex: 1; min-height: 480px; }
+.gateway-panel {
+  position: relative; background-size: cover; background-position: center;
+  display: flex; align-items: flex-end; padding: clamp(1.5rem, 4vw, 3rem);
+  color: var(--ivory); overflow: hidden;
+}
+.gateway-panel-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(28,20,16,0.15) 0%, rgba(28,20,16,0.85) 100%);
+  transition: background 0.3s ease;
+}
+.gateway-panel:hover .gateway-panel-overlay { background: linear-gradient(180deg, rgba(28,20,16,0.05) 0%, rgba(28,20,16,0.9) 100%); }
+.gateway-panel-copy { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.gateway-eyebrow { font-size: 0.75rem; letter-spacing: 0.2em; opacity: 0.8; }
+.gateway-name { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.1; }
+.gateway-panel-wedding .gateway-name { color: var(--gold-thread); }
+.gateway-tagline { font-size: 0.9rem; max-width: 32ch; opacity: 0.85; }
+.gateway-cta { font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 0.6rem; }
+
+@media (max-width: 760px) {
+  .gateway-split { grid-template-columns: 1fr; min-height: unset; }
+  .gateway-panel { min-height: 60vh; }
+}
+
+/* ===========================================================
+   Collection galleries (menswear, price-free display)
+   =========================================================== */
+.collection-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.gallery-figure { margin: 0; }
+.gallery-figure img { width: 100%; height: 260px; object-fit: cover; border-radius: 3px; }
+.gallery-figure-fallback { width: 100%; height: 260px; border-radius: 3px; }
+.gallery-figure figcaption { margin-top: 0.5rem; font-size: 0.85rem; color: var(--espresso); }
+.collection-info { padding-top: 0.5rem; }
+.collection-index { font-family: var(--display); font-size: 2.4rem; display: block; margin-bottom: 0.2rem; }
+
+@media (max-width: 760px) {
+  .collection-grid { grid-template-columns: 1fr !important; }
+  .row-alt .collection-gallery { order: 0 !important; }
+  .collection-gallery { grid-template-columns: 1fr 1fr; }
+}
+
+/* Product grid on the collections-browser page — image + name only */
+.product-grid figure.product-card { border: none; padding: 0; }
+.product-grid figcaption { font-size: 0.9rem; color: var(--espresso); margin-top: 0.5rem; font-weight: 500; }
+
+/* ===========================================================
+   MOCCA Wedding — dedicated black & gold theme
+   =========================================================== */
+.page-wedding { background: var(--near-black); }
+.page-wedding .site-header { background: rgba(28,20,16,0.92); border-bottom-color: rgba(242,238,230,0.12); }
+.page-wedding .wordmark, .page-wedding .main-nav a { color: var(--ivory); }
+.page-wedding .site-footer { margin-top: 0; }
+
+.wedding-hero {
+  position: relative; min-height: 78vh; background-size: cover; background-position: center;
+  display: flex; align-items: flex-end; padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+.wedding-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(28,20,16,0.15) 0%, rgba(10,7,5,0.92) 100%);
+}
+.wedding-hero-inner { position: relative; z-index: 1; color: var(--ivory); }
+.eyebrow.gold { color: var(--gold-thread); }
+.wedding-h1 { color: var(--ivory); font-size: clamp(2.2rem, 5.5vw, 4rem); max-width: 16ch; }
+.wedding-lede { color: rgba(242,238,230,0.78); max-width: 44ch; }
+.btn-solid.gold { background: var(--gold-thread); color: var(--near-black); border-color: var(--gold-thread); }
+.btn-solid.gold:hover { background: var(--ivory); border-color: var(--ivory); }
+.btn-line.gold { border-color: var(--gold-thread); color: var(--gold-thread); }
+.btn-line.gold:hover { background: var(--gold-thread); color: var(--near-black); }
+
+.wedding-floating-badge {
+  position: absolute; top: clamp(1.5rem, 5vw, 3rem); right: clamp(1.5rem, 5vw, 3rem);
+  background: rgba(201,166,107,0.15); border: 1px solid var(--gold-thread); color: var(--gold-thread);
+  font-family: var(--display); font-style: italic; font-size: 1rem;
+  padding: 0.6em 1.2em; border-radius: 100px; z-index: 1;
+}
+
+.wedding-lookbook { background: var(--near-black); padding: clamp(3rem, 6vw, 5rem) 0; }
+.wedding-h2 { color: var(--ivory); max-width: 26ch; margin: 0 auto; }
+.page-wedding .section-head { text-align: center; }
+
+.lookbook-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
+}
+.lookbook-figure { margin: 0; }
+.lookbook-figure img { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 3px; border: 1px solid rgba(242,238,230,0.1); }
+.lookbook-figure figcaption { margin-top: 0.6rem; font-size: 0.8rem; color: rgba(242,238,230,0.75); text-align: center; }
+
+@media (max-width: 960px) { .lookbook-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { .lookbook-grid { grid-template-columns: 1fr 1fr; gap: 0.8rem; } }
+
+.wedding-cta { background: #0F0A08; }
+.wedding-cta h2 { color: var(--ivory); }
+
+/* ===========================================================
+   Reviews band (moved out of the header, to page end)
+   =========================================================== */
+.reviews-band { background: var(--espresso); color: var(--ivory); padding: clamp(2.5rem, 5vw, 3.5rem) 0; }
+.reviews-inner { text-align: center; }
+.reviews-band .eyebrow { color: var(--gold-thread); }
+.reviews-score { display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-bottom: 1.2rem; flex-wrap: wrap; }
+.reviews-stars { color: var(--gold-thread); font-size: 1.2rem; letter-spacing: 0.05em; }
+.reviews-number { font-family: var(--display); font-size: 2.2rem; color: var(--ivory); }
+.reviews-count { font-size: 0.85rem; color: rgba(242,238,230,0.75); }
+.reviews-band .btn-line { border-color: var(--ivory); color: var(--ivory); }
+.reviews-band .btn-line:hover { background: var(--ivory); color: var(--espresso); }

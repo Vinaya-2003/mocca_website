@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Store Locator — MOCCA{% endblock %}
+{% block bodyclass %}page-stores{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="wrap">
+    <p class="eyebrow">Malappuram, Kerala</p>
+    <h1>Six stores, one address book</h1>
+  </div>
+</section>
+
+<section class="stores-full">
+  <div class="wrap stores-grid">
+    {% for s in stores %}
+    <div class="store-card store-card-full {{ 'store-flagship' if s.flagship else '' }}">
+      {% if s.flagship %}<span class="flagship-tag">Flagship</span>{% endif %}
+      {% if s.image_url %}
+      <img class="store-card-photo" src="{{ url_for('static', filename=s.image_url) }}" alt="{{ s.name }}">
+      {% endif %}
+      <h3>{{ s.name }}</h3>
+      <p class="store-address">{{ s.address }}</p>
+      <p class="store-meta">★ {{ s.rating }} · {{ "{:,}".format(s.reviews) }} Google reviews</p>
+      <p class="store-hours">{{ s.hours }}{% if s.phone %} · {{ s.phone }}{% endif %}</p>
+      <a class="btn btn-line small" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&query={{ s.name | urlencode }}">
+        Get directions
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

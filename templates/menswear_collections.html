@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Men's Wear Collections — MOCCA{% endblock %}
+{% block bodyclass %}page-collections{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <div class="wrap">
+    <p class="eyebrow">MOCCA Men's Wear</p>
+    <h1>Collections</h1>
+  </div>
+</section>
+
+<section class="collections-browser">
+  <div class="wrap browser-grid">
+    <aside class="browser-nav" aria-label="Collections">
+      {% for c in section.collections %}
+      <a href="{{ url_for('menswear_collection', slug=c.slug) }}"
+         class="browser-nav-item {{ 'is-active' if c.slug == active_slug else '' }}"
+         style="--swatch-color: {{ c.swatch }}">
+        <span class="swatch-chip"></span>{{ c.name }}
+      </a>
+      {% endfor %}
+    </aside>
+
+    <div class="browser-content">
+      {% for c in section.collections %}
+      {% if c.slug == active_slug %}
+      <div class="browser-heading" style="--swatch-color: {{ c.swatch }}">
+        <h2>{{ c.name }}</h2>
+        <p>{{ c.tagline }}</p>
+      </div>
+      <div class="product-grid">
+        {% for p in c.products %}
+        <figure class="product-card">
+          {% if p.image_url %}
+          <img class="product-card-photo" src="{{ url_for('static', filename=p.image_url) }}" alt="{{ p.name }}">
+          {% else %}
+          <div class="product-card-swatch" style="background:{{ c.swatch }}"></div>
+          {% endif %}
+          <figcaption>{{ p.name }}</figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
